@@ -18,13 +18,7 @@
     width: 16px;
 }
 
-label.no-bold {
-    font-weight: normal !important;
-}
-
-/* TODO is this really needed? */
-/* TODO rename to -middle */
-.vertical-align-center {
+.vertical-align-middle {
     display: flex;
     align-items: center;
 }
