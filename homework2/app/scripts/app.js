@@ -1,7 +1,6 @@
 (function () {
   'use strict';
 
-    angular.module('auction', ['ngRoute']);
     angular.module('auction', ['ngRoute']).config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/', {
