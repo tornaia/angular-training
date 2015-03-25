@@ -24,6 +24,18 @@
     find: function () {
       return this.$http.get('data/products-search.json')
           .then(function (resp) { return resp.data; });
+    },
+    getProductById: function(productId) {
+        return this.find().then(function(resp) {
+            // http://stackoverflow.com/questions/13789618/differences-between-lodash-and-underscore
+            for (var i=0;i<resp.length;++i) {
+                var item = resp[i];
+                if (item.id === productId) {
+                    return item;
+                }
+            }
+            throw 'Product with given id was not found: ' + productId;
+        });
     }
   };
 
