@@ -22,3 +22,8 @@ body {
 .pb-20 {
     padding-bottom: 20px;
 }
+
+.item img {
+    width: 128px;
+    height: 128px;
+}
