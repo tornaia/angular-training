@@ -63,7 +63,7 @@
         };
     })
     .config(['RestangularProvider', function (RestangularProvider) {
-      RestangularProvider.setBaseUrl('/data');
+      RestangularProvider.setBaseUrl('data');
       RestangularProvider.setRequestSuffix('.json');
     }])
     .run(['$rootScope', function ($rootScope) {
