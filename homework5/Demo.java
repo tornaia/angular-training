@@ -3,10 +3,7 @@ import streams.auction.BidRequest;
 import streams.auction.Product;
 import streams.auction.User;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Timer;
-import java.util.TimerTask;
+import java.util.*;
 
 public class Demo {
 
@@ -19,13 +16,13 @@ public class Demo {
     }
 
     private static User getRandomUser() {
-        ArrayList<User> users = new ArrayList<>(BidEngine.getUsers());
+        List<User> users = new ArrayList<>(BidEngine.getUsers());
         Collections.shuffle(users);
         return users.isEmpty() ? null : users.get(0);
     }
 
     private static Product getRandomProduct() {
-        ArrayList<Product> products = new ArrayList<>(BidEngine.getProducts());
+        List<Product> products = new ArrayList<>(BidEngine.getProducts());
         Collections.shuffle(products);
         return products.isEmpty() ? null : products.get(0);
     }
