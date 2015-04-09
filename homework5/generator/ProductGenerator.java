@@ -5,8 +5,11 @@ import streams.auction.Product;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ProductGenerator {
+
+    private static final AtomicInteger sequence = new AtomicInteger(1);
 
     public static final int MINIMAL_PRICE_TOP_LIMIT = 1000;
     public static final int RESERVED_PRICE_OFFSET = 1000;
@@ -17,7 +20,7 @@ public final class ProductGenerator {
 
     public static Product generateProduct() {
         Product product = new Product();
-        product.id = -1;
+        product.id = sequence.getAndIncrement();
         product.title = "title" + product.id;
         product.thumb = null;
         product.description = null;

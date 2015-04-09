@@ -22,7 +22,7 @@ public final class BidEngine {
 
         // 2 products
         productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
-        productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
+        // productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
     }
 
     public static synchronized Set<User> getUsers() {
@@ -42,8 +42,11 @@ public final class BidEngine {
         List<Bid> productRelatedBids = productsAndBids.get(bidRequest.product);
         productRelatedBids.add(bid);
 
-        Comparator<Bid> byAmount = (a1, a2) -> a1.amount.compareTo(a2.amount);
-        productsAndBids.put(bid.product, productRelatedBids.stream().sorted(byAmount).collect(Collectors.toList()));
+        Comparator<Bid> byAmount = (bid1, bid2) -> bid1.amount.compareTo(bid2.amount);
+        productsAndBids.put(bid.product, productRelatedBids
+                .stream()
+                .sorted(byAmount)
+                .collect(Collectors.toList()));
 
         // notify all bidders of the product with overbidNotification flag true
         productRelatedBids.stream()
