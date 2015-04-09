@@ -22,7 +22,7 @@ public final class BidEngine {
 
         // 2 products
         productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
-        // productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
+        productsAndBids.put(ProductGenerator.generateProduct(), new ArrayList<>());
     }
 
     public static synchronized Set<User> getUsers() {
