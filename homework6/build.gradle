@@ -1,0 +1,32 @@
+apply plugin: 'war'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+version = '1.0'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    providedCompile 'javax:javaee-api:7.0'
+
+    runtime 'org.glassfish:javax.json:1.0.4'
+	compile 'com.fasterxml.jackson.core:jackson-annotations:2.2.1'
+}
+
+task npmInstall(type: Exec) {
+	inputs.files "package.json", "bower.json"
+	outputs.dir "node_modules"
+	commandLine 'npm', 'install'
+}
+
+task npmBuild(dependsOn: npmInstall, type: Exec) {
+	inputs.file "Gruntfile.js"
+	outputs.dir "dist"
+	commandLine 'npm', 'run', 'build'
+}
+
+war.dependsOn npmBuild
