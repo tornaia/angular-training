@@ -16,10 +16,13 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.logging.Logger;
 
 @Path("/products")
 @Produces("application/json")
 public class ProductService {
+
+    private static final Logger LOG = Logger.getLogger(ProductService.class.getName());
 
     @Inject
     private DataEngine dataEngine;
@@ -46,6 +49,7 @@ public class ProductService {
     @GET
     @Path("/{id}/")
     public Response getProductById(@PathParam("id") int productId, @Context HttpHeaders headers) {
+        LOG.info("Fetch product with id: " + productId);
         Product product = dataEngine.findProductById(productId);
 
         if (product != null) {
