@@ -60,7 +60,7 @@
      }
   };
 
-    // tornaia: ugly hack... somehow I have to wire angular and the websocket world
+    // tornaia: ugly hack... somehow I have to wire together the angular and the websocket world
     // better solution: http://clintberry.com/2013/angular-js-websocket-service/
     window.globalBidServicePushNotificationHandler = BidService.prototype.callback;
 
