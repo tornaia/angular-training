@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <script>
+
+       var ws;
+
+       if (window.WebSocket){
+
+           console.log("Your browser supports WebSocket protocol");
+
+           ws = new WebSocket("ws://localhost:8080/homework7-1.0/bid");
+
+           ws.onopen= function(){
+               console.log(" in onopen callback");
+               ws.send("TESZT VALAMI BLABLABLA");
+           };
+
+           ws.onmessage=function(e){
+               console.log(" got from server: " + e.data);
+           };
+
+           ws.onerror=function(e){
+               console.log(" in onerror: " + e.data);
+           };
+       } else{
+           console.log("Your browser doesn’t support WebSocket protocol");
+       }
+
+    </script>
+</body>
+</html>
